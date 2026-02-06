@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العالم النت - الإعلان الرسمي</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e293b 0%, #3730a3 50%, #7c3aed 100%);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .background {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .background::before,
+        .background::after,
+        .background .bg-blob-3 {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.2;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .background::before {
+            background: #3b82f6;
+            top: 80px;
+            left: 40px;
+        }
+
+        .background::after {
+            background: #a855f7;
+            top: 160px;
+            right: 40px;
+            animation-delay: 1s;
+        }
+
+        .background .bg-blob-3 {
+            background: #ec4899;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: 2s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(1.1); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Image */
+        .header-image {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header-image img {
+            max-width: 100%;
+            width: 100%;
+            max-width: 700px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 4px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Speed Badge */
+        .speed-badge {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .speed-badge .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(90deg, #facc15, #f97316, #ef4444);
+            color: #000;
+            font-size: 2.5rem;
+            font-weight: 900;
+            padding: 20px 40px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .speed-badge .badge svg {
+            width: 50px;
+            height: 50px;
+            fill: currentColor;
+        }
+
+        /* Features */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(6, 182, 212, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            color: #fff;
+            padding: 16px 24px;
+            border-radius: 16px;
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+
+        .feature svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .feature.green {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: rgba(74, 222, 128, 0.3);
+        }
+
+        .feature.purple {
+            background: rgba(168, 85, 247, 0.2);
+            border-color: rgba(192, 132, 252, 0.3);
+        }
+
+        /* Cards Section */
+        .cards-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 32px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .cards-section h2 {
+            text-align: center;
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 32px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 16px;
+        }
+
+        .card {
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card .price {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .card .label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        .card.c1 { background: linear-gradient(135deg, #34d399, #16a34a); }
+        .card.c2 { background: linear-gradient(135deg, #22d3ee, #2563eb); }
+        .card.c3 { background: linear-gradient(135deg, #60a5fa, #4f46e5); }
+        .card.c4 { background: linear-gradient(135deg, #a78bfa, #9333ea); }
+        .card.c5 { background: linear-gradient(135deg, #c084fc, #a855f7); }
+        .card.c6 { background: linear-gradient(135deg, #f472b6, #e11d48); }
+        .card.c7 { background: linear-gradient(135deg, #fb923c, #dc2626); }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-section h2 {
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 32px;
+        }
+
+        .phone-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: linear-gradient(90deg, #4ade80, #10b981, #14b8a6);
+            color: #000;
+            font-size: 3rem;
+            font-weight: 900;
+            padding: 32px 64px;
+            border-radius: 24px;
+            text-decoration: none;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .phone-button:hover {
+            transform: scale(1.05);
+            background: linear-gradient(90deg, #22c55e, #059669, #0d9488);
+        }
+
+        .phone-button svg {
+            width: 60px;
+            height: 60px;
+            fill: currentColor;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+        }
+
+        .footer-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #22d3ee, #60a5fa, #a78bfa);
+            color: #000;
+            font-size: 1.25rem;
+            font-weight: 900;
+            padding: 16px 48px;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .cards-section {
+                padding: 20px;
+            }
+
+            .speed-badge .badge {
+                font-size: 1.5rem;
+                padding: 16px 24px;
+            }
+
+            .phone-button {
+                font-size: 2rem;
+                padding: 24px 32px;
+            }
+
+            .phone-button svg {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background">
+        <div class="bg-blob-3"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header Image -->
+        <div class="header-image">
+            <img src="https://maas-log-prod.cn-wlcb.ufileos.com/anthropic/cf7f2b01-6022-4b6b-8df5-80b56ca4f94c/97388328af6ce350bb617bf009d03089.jpg?UCloudPublicKey=TOKEN_e15ba47a-d098-4fbd-9afc-a0dcf0e4e621&Expires=1770401056&Signature=awS9dPD/0qpXaSU9L7K2LL8s2os=" alt="العالم النت">
+        </div>
+
+        <!-- Speed Badge -->
+        <div class="speed-badge">
+            <div class="badge">
+                <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                سرعة 6 جيجا
+                <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+            <div class="feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                إنترنت فائق السرعة
+            </div>
+            <div class="feature green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                آمن ومضمون
+            </div>
+            <div class="feature purple">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.5 4.5H18l-3.5 2.5 1 4.5-3.5-2.5-3.5 2.5 1-4.5L6 7.5h4.5L12 3z"/></svg>
+                خدمة مميزة
+            </div>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="cards-section">
+            <h2>💳 كروت بشتى الفئات</h2>
+            <div class="cards-grid">
+                <div class="card c1">
+                    <div class="price">200</div>
+                    <div class="label">ريال</div>
+                </div>
+                <div class="card c2">
+                    <div class="price">500</div>
+                    <div class="label">ريال</div>
+                </div>
+                <div class="card c3">
+                    <div class="price">1000</div>
+                    <div class="label">ريال</div>
+                </div>
+                <div class="card c4">
+                    <div class="price">1500</div>
+                    <div class="label">ريال</div>
+                </div>
+                <div class="card c5">
+                    <div class="price">2000</div>
+                    <div class="label">ريال</div>
+                </div>
+                <div class="card c6">
+                    <div class="price">3000</div>
+                    <div class="label">ريال</div>
+                </div>
+                <div class="card c7">
+                    <div class="price">6000</div>
+                    <div class="label">ريال</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h2>📞 للتواصل مع الإدارة</h2>
+            <a href="tel:772881027" class="phone-button">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                772 881 027
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-badge">
+                🌐 العالم النت - اتصالك الأسرع 🌐
+            </div>
+        </div>
+    </div>
+</body>
+</html>
